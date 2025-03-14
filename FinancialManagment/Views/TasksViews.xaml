@@ -56,6 +56,33 @@
             </Style.Triggers>
         </Style>
 
+        <!-- Small Buttons -->
+        <Style x:Key="FunctionButtons" TargetType="Button">
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="FontFamily" Value="Bahnschrift SemiLight SemiCondensed"/>
+            <Setter Property="Margin" Value="2 2"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF1D1C1C"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" BorderThickness="2" BorderBrush="#FF0C0B0B">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#FF0C0B0B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- List View -->
         <Style x:Key="ListViewTables" TargetType="ListView">
             <Setter Property="Width" Value="250"/>
@@ -63,7 +90,7 @@
             <Setter Property="Background" Value="#FF0C0B0B"/>
             <Setter Property="BorderBrush" Value="#FF1D1C1C"/>
             <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Margin" Value="30 10 30 0"/>
+            <Setter Property="Margin" Value="30 10 5 0"/>
             <Setter Property="Padding" Value="0 10"/>
         </Style>
 
@@ -158,12 +185,20 @@
             <!-- COLUMN 1 -->
             <StackPanel Grid.Column="1">
                 <Label Style="{StaticResource LabelsStyle}" Margin="60 20 60 0">Datas de Pagamento</Label>
-                <ListView x:Name="paymentTable" Style="{StaticResource ListViewTables}"  ItemContainerStyle="{StaticResource ListViewsItems}">
-                    <ListViewItem>25/02/2025</ListViewItem>
-                    <ListViewItem>25/03/2025</ListViewItem>
-                    <ListViewItem>25/04/2025</ListViewItem>
-                </ListView>
-
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ListView x:Name="paymentTable" Style="{StaticResource ListViewTables}"  ItemContainerStyle="{StaticResource ListViewsItems}" MouseDoubleClick="paymentTable_MouseDoubleClick">
+                        <ListViewItem>25/02/2025</ListViewItem>
+                        <ListViewItem>25/03/2025</ListViewItem>
+                        <ListViewItem>25/04/2025</ListViewItem>
+                    </ListView>
+                    <Button x:Name="addPaymentItemBtn" 
+                            Style="{StaticResource FunctionButtons}" 
+                            VerticalAlignment="Top" 
+                            Margin="0 25 0 0"
+                            Click="addPaymentItemBtn_Click"
+                            >+</Button>
+                </StackPanel>
+                
                 <Label Style="{StaticResource LabelsStyle}" Margin="60 20 60 0">Data final</Label>
                 <TextBox Style="{StaticResource TextBoxesStyle}" FontWeight="Bold" Margin="65 10">25/04/2025</TextBox>
             </StackPanel>

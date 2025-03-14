@@ -117,5 +117,17 @@ namespace FinancialManagment.Views
                 TotalValueBox.Text = "";
             }
         }
+
+        private void paymentTable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int selectedItem = paymentTable.SelectedIndex;
+            InstallmentPaidPopUp popUp = new InstallmentPaidPopUp();
+            popUp.ShowDialog();
+        }
+        private void addPaymentItemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            InstallmentPaidPopUp popUp = new InstallmentPaidPopUp();
+            popUp.ShowDialog();
+        }
     }
 }

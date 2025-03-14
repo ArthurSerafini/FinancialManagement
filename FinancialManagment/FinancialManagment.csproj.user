@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\InstallmentPaidPopUp.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Page2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
