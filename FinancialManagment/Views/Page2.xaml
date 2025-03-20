@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FinancialManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1080">
-    <Grid Background="Aqua">
+    <Grid Background="AntiqueWhite">
             
     </Grid>
 </UserControl>

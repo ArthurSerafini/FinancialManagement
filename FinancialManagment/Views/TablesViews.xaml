@@ -94,6 +94,9 @@
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="Background" Value="#FF121111"/>
                 </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#FF403F3F"/>
+                </Trigger>
             </Style.Triggers>
         </Style>
         
@@ -108,18 +111,18 @@
         <Label FontSize="25" HorizontalAlignment="Center" Foreground="White">A pagar</Label>
         <Rectangle Fill="#FF0C0B0B" Width="250" Margin="50"/>
         <StackPanel Width="250" Grid.Column="0" Margin="50">
-            <ListView x:Name="paymentTable" Style="{StaticResource ListViewTables}"  ItemContainerStyle="{StaticResource ListViewsItems}">
-                    <ListViewItem>Item1</ListViewItem>
-                    <ListViewItem>Item2</ListViewItem>
-                    <ListViewItem>Item3</ListViewItem>
-                </ListView>
+            <ListView x:Name="paymentTable" 
+                      Style="{StaticResource ListViewTables}"  
+                      ItemContainerStyle="{StaticResource ListViewsItems}"
+                      MouseDoubleClick="paymentTable_MouseDoubleClick"
+                      ></ListView>
         </StackPanel>
         <StackPanel Margin="10 50 50 0" Width="50" HorizontalAlignment="Right">
             <Button x:Name="addTaskBtn" Style="{StaticResource FunctionButtons}" Click="addTaskBtn_Click">+</Button>
-            <Button Style="{StaticResource FunctionButtons}">-</Button>
+            <Button x:Name="removeTaskBtn" Style="{StaticResource FunctionButtons}" Click="removeTaskBtn_Click">-</Button>
             <Button Style="{StaticResource FunctionButtons}">
                 <StackPanel>
-                    <Image Source="../Icons/edit-icon.png" Width="20"/>
+                    <Image Source="../Icons/white-arrow-to-right.png" Width="40"/>
                 </StackPanel>
             </Button>
         </StackPanel>

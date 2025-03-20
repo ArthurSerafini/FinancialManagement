@@ -14,6 +14,7 @@ namespace DatabaseConstructor
     {
 
         public DbSet<PaymentInfo> PaymentInfos { get; set; }
+        public DbSet<InstallmentsTable> InstallmentsTable { get; set; }
 
         public string DbPath { get; set; }
 

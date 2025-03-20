@@ -70,15 +70,15 @@
         <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center">
             <StackPanel>
                 <Label Style="{StaticResource LabelsStyle}">Data</Label>
-                <TextBox Style="{StaticResource TextBoxesStyle}" Margin="5">20/02/2025</TextBox>
+                <TextBox x:Name="DateBox" Style="{StaticResource TextBoxesStyle}" Margin="5">20/02/2025</TextBox>
             </StackPanel >
             <StackPanel>
                 <Label Style="{StaticResource LabelsStyle}">Valor pago</Label>
-                <TextBox Style="{StaticResource TextBoxesStyle}" Margin="5">R$ 100,00</TextBox>
+                <TextBox x:Name="PaidValueBox" Style="{StaticResource TextBoxesStyle}" Margin="5" LostFocus="PaidValueBox_LostFocus"></TextBox>
             </StackPanel>
             <StackPanel>
                 <Label Style="{StaticResource LabelsStyle}">Pago</Label>
-                <CheckBox BorderThickness="0.5" Margin="0 15" HorizontalAlignment="Center">
+                <CheckBox x:Name="PaidCheck" BorderThickness="0.5" Margin="0 15" HorizontalAlignment="Center">
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2" />
                     </CheckBox.LayoutTransform>
@@ -87,8 +87,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Height="60"  Margin="0 20 10 0">
-            <Button Style="{StaticResource ButtonsStyle}" >Salvar</Button>
-            <Button Style="{StaticResource ButtonsStyle}" Width="110">Cancelar</Button>
+            <Button x:Name="SaveBtn" Style="{StaticResource ButtonsStyle}" Click="SaveBtn_Click">Salvar</Button>
+            <Button x:Name="CancelBtn" Style="{StaticResource ButtonsStyle}" Width="110" Click="CancelBtn_Click">Cancelar</Button>
         </StackPanel>
     </Grid>
 </Window>

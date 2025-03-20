@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FinancialManagment.Enums;
 using FinancialManagment.Views;
 
 namespace FinancialManagment
@@ -18,18 +19,18 @@ namespace FinancialManagment
     public partial class MainWindow : Window
     {
 
-        public delegate void Delegate();
+        public delegate void Delegate(ViewsNamesEnum viewToOpen, int id);
         
 
         public MainWindow()
         {
             InitializeComponent();
+            openView(ViewsNamesEnum.TablesViews);
         }
 
         private void MenuTableBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext =  new TablesViews();
-            TablesViews.subscribeEvent(openTasksView);
+            openView(ViewsNamesEnum.TablesViews);
         }
 
         private void MenuPage2Btn_Click(object sender, RoutedEventArgs e)
@@ -37,9 +38,28 @@ namespace FinancialManagment
             DataContext = new Page2();
         }
 
-        private void openTasksView()
+        private void openView(ViewsNamesEnum viewToOpen, int id = -1)
         {
-            DataContext = new TasksViews();
+            switch(viewToOpen)
+            {
+                case ViewsNamesEnum.TablesViews:
+                    DataContext = new TablesViews();
+                    TablesViews.subscribeEvent(openView);
+                    break;
+
+                case ViewsNamesEnum.TasksViews:
+                    DataContext = new TasksViews();
+                    TasksViews.subscribeEvent(openView);
+                    break;
+
+                case ViewsNamesEnum.TasksViewsEditMode:
+                    DataContext = new TasksViews(id);
+                    TasksViews.subscribeEvent(openView);
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

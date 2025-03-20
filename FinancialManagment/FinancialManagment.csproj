@@ -17,6 +17,12 @@
 
   <ItemGroup>
     <None Remove="Icons\edit-icon.png" />
+    <None Remove="Icons\white-arrow-to-left.png" />
+    <None Remove="Icons\white-arrow-to-right.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\white-arrow-to-left.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +40,7 @@
 
   <ItemGroup>
     <Resource Include="Icons\edit-icon.png" />
+    <Resource Include="Icons\white-arrow-to-right.png" />
   </ItemGroup>
 
 </Project>

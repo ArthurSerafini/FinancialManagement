@@ -117,6 +117,9 @@
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="Background" Value="#FF121111"/>
                 </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#FF403F3F"/>
+                </Trigger>
             </Style.Triggers>
         </Style>
         
@@ -135,7 +138,7 @@
                      Margin="40 10" 
                      Text="Título"/>
             <Button x:Name="NewBtn" Style="{StaticResource ButtonsTask}" Click="NewBtn_Click">Salvar</Button>
-            <Button Style="{StaticResource ButtonsTask}" Width="120">Cancelar</Button>
+            <Button x:Name="CancelBtn" Style="{StaticResource ButtonsTask}" Width="120" Click="CancelBtn_Click">Cancelar</Button>
         </StackPanel>
         
         <Grid Background="#FF151515">
@@ -160,9 +163,9 @@
                 
                 <Label Style="{StaticResource LabelsStyle}" Margin="40 10 40 0">Parcelas</Label>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="InstallmentsPaidBox" Style="{StaticResource TextBoxesStyle}" Margin="40 0 10 0" Width="70"></TextBox>
+                    <TextBox x:Name="InstallmentsPaidBox" Style="{StaticResource TextBoxesStyle}" Margin="40 0 10 0" Width="70" IsReadOnly="True" IsEnabled="False"></TextBox>
                     <Label Style="{StaticResource LabelsStyle}" Margin="5 10">de</Label>
-                    <TextBox x:Name="InstallmentsTotalBox" Style="{StaticResource TextBoxesStyle}" Margin="10 0" Width="70"></TextBox>
+                    <TextBox x:Name="InstallmentsTotalBox" Style="{StaticResource TextBoxesStyle}" Margin="10 0" Width="70" IsReadOnly="True" IsEnabled="False"></TextBox>
                 </StackPanel>
                 
 
@@ -171,6 +174,8 @@
                          Style="{StaticResource TextBoxesStyle}" 
                          Margin="40 0"
                          LostFocus="PaidValueBox_LostFocus"
+                         IsReadOnly="True"
+                         IsEnabled="False"
                          />
 
                 <Label Style="{StaticResource LabelsStyle}" Margin="40 20 40 0">Valor Total</Label>
@@ -186,17 +191,26 @@
             <StackPanel Grid.Column="1">
                 <Label Style="{StaticResource LabelsStyle}" Margin="60 20 60 0">Datas de Pagamento</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <ListView x:Name="paymentTable" Style="{StaticResource ListViewTables}"  ItemContainerStyle="{StaticResource ListViewsItems}" MouseDoubleClick="paymentTable_MouseDoubleClick">
-                        <ListViewItem>25/02/2025</ListViewItem>
-                        <ListViewItem>25/03/2025</ListViewItem>
-                        <ListViewItem>25/04/2025</ListViewItem>
-                    </ListView>
-                    <Button x:Name="addPaymentItemBtn" 
+                    <ListView x:Name="paymentTable" 
+                              Style="{StaticResource ListViewTables}"  
+                              ItemContainerStyle="{StaticResource ListViewsItems}" 
+                              MouseDoubleClick="paymentTable_MouseDoubleClick"/>
+                    <StackPanel>
+                        <Button x:Name="addPaymentItemBtn" 
                             Style="{StaticResource FunctionButtons}" 
                             VerticalAlignment="Top" 
                             Margin="0 25 0 0"
                             Click="addPaymentItemBtn_Click"
                             >+</Button>
+                        
+                            <Button x:Name="removePaymentItemBtn" 
+                            Style="{StaticResource FunctionButtons}" 
+                            VerticalAlignment="Top" 
+                            Margin="0 5 0 0"
+                            Click="removePaymentItemBtn_Click"
+                            >-</Button>
+                    </StackPanel>
+                    
                 </StackPanel>
                 
                 <Label Style="{StaticResource LabelsStyle}" Margin="60 20 60 0">Data final</Label>
